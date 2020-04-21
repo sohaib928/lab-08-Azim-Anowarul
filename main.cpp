@@ -14,5 +14,7 @@ int main()
   frame("inImage.pgm");
   scale("inImage.pgm");
   pixelate("inImage.pgm");
-  return 0;
-}
+  ghost("inImage.pgm");
+
+    return 0;
+  }
