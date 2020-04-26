@@ -148,3 +148,38 @@ void pixelate(std::string image){
 	}
   writeImage("taskf.pgm",outImg, h, w);
 }
+
+
+
+// NEW FEATURE: CHECKERBOARD B/W
+void ghost(std::string input_file){
+  //Create 2D array to hold numbers for colors from input image
+  int img[MAX_H][MAX_W];
+  int h, w;
+
+  //Take inImage.pgm color numbers and store them into the img 2D array (line 9)
+  readImage(input_file, img, h, w);
+
+  //Create 2D array to hold numbers for colors from input image to create output image
+  int out[MAX_H][MAX_W];
+
+  //Store color numbers from input image in output array and modify them (based on question)
+  for (int row = 0; row < h; row++){
+    for (int col = 0; col < w; col++){
+      //Assign pixel based on row (even/odd) and column (even/odd)
+      if(row % 2 == 0 && col % 2 == 0){
+        out[row][col] = 255;
+      }
+      else if(row % 2 != 0 && col % 2 != 0){
+        out[row][col] = 255;
+      }
+      else{
+        out[row][col] = img[row][col];
+      }
+      
+    }
+  }
+  // and save this new image to file
+  writeImage("ghost.pgm", out, h, w);
+}
+
